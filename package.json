@@ -5,11 +5,17 @@
   "repository": "https://github.com/pach092/graphql.git",
   "author": "pach092 <pachobernal5@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "graphql": "^0.11.7",
     "graphql-server-express": "^1.2.0",
     "graphql-tools": "^2.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
   }
 }
