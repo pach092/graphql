@@ -1,4 +1,5 @@
-const { makeExecutableSchema } = require('graphql-tools')
+const { makeExecutableSchema, addMockFunctionsToSchema } = require('graphql-tools')
+const casual = require('casual')
 
 const typeDefs = `
     # Esto es un curso en el sistema
@@ -77,6 +78,26 @@ const resolvers = {
 const schema = makeExecutableSchema({ 
     typeDefs,
     resolvers
+})
+
+addMockFunctionsToSchema({ 
+    schema,
+    mocks:{
+        Curso: () => {
+            return {
+                id: casual.uuid,
+                titulo: casual.sentence,
+                descripcion: casual.sentences(2)
+            }
+        },
+        Profesor: () => {
+            return {
+                nombre: casual.name,
+                nacionalidad: casual.country
+            }
+        }
+    },
+    preserveResolvers: true
 })
 
 module.exports = schema
