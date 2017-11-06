@@ -17,4 +17,10 @@ module.exports = `
         nacionalidad: String!,
         genero: Genero
     }
+
+    input ProfesorEditable {
+        nombre: String,
+        genero: Genero,
+        nacionalidad: String
+    }
 `
