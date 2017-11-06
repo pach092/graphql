@@ -47,7 +47,10 @@ const resolvers = {
         
         cursoDelete: (_, args) => {
             return Curso.query().findById(args.cursoId).then((curso) => {
-                return Curso.query().deleteById(args.cursoId).then(() => curso)
+                return Curso.query().deleteById(args.cursoId).then((filasBorradas) => {
+                    if (filasBorradas > 0) return profesor
+                    throw new Error(`El profesor con id ${args.profesorId} no se pudo eliminar`)
+                })
             })
         }
     }
